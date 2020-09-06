@@ -4,11 +4,13 @@ ja:
       models:
         post:
           attributes:
+            base:
+              max_content_attachable_byte_size_is_too_big: 添付ファイルは%{max_mega_bytes}MBを超えています。[%{size}/%{max_content_attachable_byte_size}]
+            content:
+              too_long: が%{max_content_length}文字を超えています。[%{length}/%{max_content_length}]
             title:
               blank: が空です。
               too_long: が%{count}文字を超えています。
-            content:
-              too_long: が%{max_content_length}文字を超えています。[%{length}/%{max_content_length}] 
     attributes:
       post:
         title: タイトル
