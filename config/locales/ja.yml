@@ -6,6 +6,7 @@ ja:
           attributes:
             base:
               max_content_attachable_byte_size_is_too_big: 添付ファイルは%{max_mega_bytes}MBを超えています。[%{size}/%{max_content_attachable_byte_size}]
+              max_content_attachable_count_is_too_much: 添付ファイルは%{max_content_attachable_count}個を超えています。[%{count}/%{max_content_attachable_count}]
             content:
               too_long: が%{max_content_length}文字を超えています。[%{length}/%{max_content_length}]
             title:

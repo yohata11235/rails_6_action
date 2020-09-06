@@ -3,13 +3,16 @@ class Post < ApplicationRecord
 
   validates :title, length: { maximum: 32 },presence: true
   validate :validate_content_attachable_byte_size
+  validate :validate_content_attachable_count
   validate :validate_content_length
 
 
   MAX_CONTENT_LENGTH = 150
+  MAX_CONTENT_ATTACHABLE_COUNT = 3
   ONE_KILOBYTE = 1024
   MEGA_BYTES = 4
   MAX_CONTENT_ATTACHABLE_BYTE_SIZE = MEGA_BYTES * 1_000 * ONE_KILOBYTE
+
 
   private
 
@@ -34,6 +37,18 @@ class Post < ApplicationRecord
     #     size: size
     #   )
     # end
+  end
+
+  def  validate_content_attachable_count
+    count = content.body.attachables.count
+    if count > MAX_CONTENT_ATTACHABLE_COUNT
+        errors.add(
+          :base,
+          :max_content_attachable_count_is_too_much,
+          max_content_attachable_count: MAX_CONTENT_ATTACHABLE_COUNT,
+          count: count
+        )
+    end
   end
 
   def validate_content_length
